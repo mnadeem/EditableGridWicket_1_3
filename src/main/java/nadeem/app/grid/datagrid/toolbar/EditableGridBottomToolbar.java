@@ -38,7 +38,8 @@ public abstract class EditableGridBottomToolbar<T> extends AbstractEditableGridT
 	}
 	
 	protected void onError(AjaxRequestTarget target) {	}
-
+	
+	//TODO: use Objenesis instead of the following
 	@SuppressWarnings("unchecked")
 	private void createNewInstance(T newObject) {
 		try {
