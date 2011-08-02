@@ -8,10 +8,16 @@ import org.apache.wicket.model.IModel;
 public abstract class AbstractEditablePropertyColumn<T> extends AbstractEditableGridColumn<T> implements IEditableGridColumn {
 
 	private static final long serialVersionUID 	= 1L;
+	private boolean isEditable 					= true;
 
 
 	public AbstractEditablePropertyColumn(IModel displayModel, String propertyExpression) {
 		super(displayModel, propertyExpression);		
+	}
+	
+	public AbstractEditablePropertyColumn(IModel displayModel, String propertyExpression, boolean isEditable) {
+		super(displayModel, propertyExpression);
+		this.isEditable = isEditable;
 	}
 
 	@Override
@@ -19,7 +25,7 @@ public abstract class AbstractEditablePropertyColumn<T> extends AbstractEditable
 		ListItem rowItem = (ListItem) item.findParent(ListItem.class);
 		ListItem selectedItem = getGrid().getSelectedItem();
 		
-		if (rowItem.equals(selectedItem)) {
+		if (isEditable && rowItem.equals(selectedItem)) {
 			EditableCellPanel provider 		= getEditableCellPanel(componentId);
 			FormComponent editorComponent 	= provider.getEditableComponent();
 			editorComponent.setModel(createLabelModel(model));

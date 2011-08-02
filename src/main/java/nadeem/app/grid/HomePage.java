@@ -7,7 +7,7 @@ import nadeem.app.grid.datagrid.EditableGrid;
 import nadeem.app.grid.datagrid.column.AbstractEditablePropertyColumn;
 import nadeem.app.grid.datagrid.column.EditableDropDownCellPanel;
 import nadeem.app.grid.datagrid.column.EditableCellPanel;
-import nadeem.app.grid.datagrid.column.EditableTextFieldColumn;
+import nadeem.app.grid.datagrid.column.RequiredEditableTextFieldColumn;
 
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -41,7 +41,8 @@ public class HomePage extends WebPage {
 
 	private List<AbstractEditablePropertyColumn<Person>> getColumns() {
 		List<AbstractEditablePropertyColumn<Person>> columns = new ArrayList<AbstractEditablePropertyColumn<Person>>();
-		columns.add(new EditableTextFieldColumn<Person>(new Model("Name"), "name"));
+		columns.add(new RequiredEditableTextFieldColumn<Person>(new Model("Name"), "name", false));
+		columns.add(new RequiredEditableTextFieldColumn<Person>(new Model("Address"), "address"));
 		columns.add(new AbstractEditablePropertyColumn<Person>(new Model("Age"), "age") {
 
 			private static final long serialVersionUID = 1L;
@@ -56,12 +57,12 @@ public class HomePage extends WebPage {
 
 	private List<Person> getPersons() {
 		List<Person> persons = new ArrayList<Person>();
-		persons.add(new Person("Person1","12"));
-		persons.add(new Person("Person2","13"));
-		persons.add(new Person("Person3","13"));
-		persons.add(new Person("Person4","13"));
-		persons.add(new Person("Person5","13"));
-		persons.add(new Person("Person6","13"));
+		persons.add(new Person("Person1","12", "Address1"));
+		persons.add(new Person("Person2","13", "Address2"));
+		persons.add(new Person("Person3","13", "Address3"));
+		persons.add(new Person("Person4","13", "Address4"));
+		persons.add(new Person("Person5","13", "Address5"));
+		persons.add(new Person("Person6","13", "Address6"));
 		return persons;
 	}
 
