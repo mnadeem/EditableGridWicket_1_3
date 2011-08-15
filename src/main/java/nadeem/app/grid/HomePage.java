@@ -1,6 +1,7 @@
 package nadeem.app.grid;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import nadeem.app.grid.datagrid.EditableGrid;
@@ -48,7 +49,7 @@ public class HomePage extends WebPage {
 			private static final long serialVersionUID = 1L;
 
 			public EditableCellPanel getEditableCellPanel(String componentId) {
-				return new EditableDropDownCellPanel(componentId, this);
+				return new EditableDropDownCellPanel(componentId, this, Arrays.asList("11-20","21-30","31-40"));
 			}
 			
 		});
