@@ -1,24 +1,24 @@
 package nadeem.app.grid.datagrid.column;
 
-import java.util.Arrays;
+import java.util.List;
 
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.FormComponent;
 
-public class EditableDropDownCellPanel extends EditableCellPanel {
+public class EditableRequiredDropDownCellPanel extends EditableCellPanel {
 
 	private static final long serialVersionUID = 1L;
 
 
-	public EditableDropDownCellPanel(String id, PropertyColumn column) {
+	public EditableRequiredDropDownCellPanel(final String id, final PropertyColumn column, @SuppressWarnings("rawtypes") final List choices) {
 		super(id);
 		
-		DropDownChoice field = new DropDownChoice("dropdown", Arrays.asList("1","2","3"));
+		DropDownChoice field = new DropDownChoice("dropdown", choices);
 		field.setLabel(column.getDisplayModel());
 		addBehaviors(field);
 		add(field);	
-	}
+	}	
 	
 
 	@Override
