@@ -1,11 +1,12 @@
 package nadeem.app.grid;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import nadeem.app.grid.datagrid.EditableGrid;
 import nadeem.app.grid.datagrid.column.AbstractEditablePropertyColumn;
-import nadeem.app.grid.datagrid.column.EditableDropDownCellPanel;
+import nadeem.app.grid.datagrid.column.EditableRequiredDropDownCellPanel;
 import nadeem.app.grid.datagrid.column.EditableCellPanel;
 import nadeem.app.grid.datagrid.column.RequiredEditableTextFieldColumn;
 
@@ -48,7 +49,7 @@ public class HomePage extends WebPage {
 			private static final long serialVersionUID = 1L;
 
 			public EditableCellPanel getEditableCellPanel(String componentId) {
-				return new EditableDropDownCellPanel(componentId, this);
+				return new EditableRequiredDropDownCellPanel(componentId, this, Arrays.asList("10","11","12","13","14","15"));
 			}
 			
 		});
