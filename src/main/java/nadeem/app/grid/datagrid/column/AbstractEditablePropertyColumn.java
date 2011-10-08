@@ -21,22 +21,22 @@ public abstract class AbstractEditablePropertyColumn<T> extends AbstractEditable
 	}
 
 	@Override
-	public final void populateItem(Item item, String componentId, IModel model) {
+	public final void populateItem(Item item, String componentId, IModel rowModel) {
 		ListItem rowItem = (ListItem) item.findParent(ListItem.class);
 		ListItem selectedItem = getGrid().getSelectedItem();
 		
 		if (isEditable && rowItem.equals(selectedItem)) {
 			EditableCellPanel provider 		= getEditableCellPanel(componentId);
 			FormComponent editorComponent 	= provider.getEditableComponent();
-			editorComponent.setModel(createLabelModel(model));
-			addBehavior(editorComponent);
+			editorComponent.setModel(createLabelModel(rowModel));
+			addBehavior(editorComponent, rowModel);
 			item.add(provider);
 		} else {
-			super.populateItem(item, componentId, model);
+			super.populateItem(item, componentId, rowModel);
 		}		
 	}
 	 
-	protected void addBehavior(FormComponent editorComponent) {
+	protected void addBehavior(FormComponent editorComponent, IModel rowModel) {
 
 	}	
 }
