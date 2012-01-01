@@ -64,11 +64,12 @@ public class EditableGrid<T> extends Panel {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onAdd(T newRow, AjaxRequestTarget target) {
+			protected final void onAdd(T newRow, AjaxRequestTarget target) {
 				items.add(newRow);
+				EditableGrid.this.onAdded(target, newRow);
 			}
 			@Override
-			protected void onError(AjaxRequestTarget target) {
+			protected final void onError(AjaxRequestTarget target) {
 				EditableGrid.this.onError(target);
 			}			
 		});
@@ -122,6 +123,10 @@ public class EditableGrid<T> extends Panel {
 	}
 
 	protected void onDelete(AjaxRequestTarget target) {
+
+	}
+	
+	protected void onAdded(AjaxRequestTarget target, T newRow) {
 
 	}
 
