@@ -14,7 +14,7 @@ public class EditableGridActionsColumn<T> extends AbstractEditableGridColumn<T> 
 	private static final long serialVersionUID = 1L;
 
 	
-	public void populateItem(Item cellItem, String componentId, IModel rowModel) {
+	public void populateItem(Item cellItem, String componentId, final IModel rowModel) {
 
 		cellItem.add(new EditableGridActionsPanel<T>(componentId, cellItem, getGrid()) {
 
@@ -22,12 +22,12 @@ public class EditableGridActionsColumn<T> extends AbstractEditableGridColumn<T> 
 
 			@Override
 			protected void onSave(AjaxRequestTarget target) {
-				EditableGridActionsColumn.this.onSave(target);				
+				EditableGridActionsColumn.this.onSave(target, rowModel);				
 			}
 
 			@Override
 			protected void onError(AjaxRequestTarget target) {				
-				EditableGridActionsColumn.this.onError(target);				
+				EditableGridActionsColumn.this.onError(target, rowModel);				
 			}
 
 			@Override
@@ -37,21 +37,21 @@ public class EditableGridActionsColumn<T> extends AbstractEditableGridColumn<T> 
 
 			@Override
 			protected void onDelete(AjaxRequestTarget target) {				
-				EditableGridActionsColumn.this.onDelete(target);		
+				EditableGridActionsColumn.this.onDelete(target, rowModel);		
 			}
 			
 		});		
 	}
 
-	protected void onDelete(AjaxRequestTarget target) {				
+	protected void onDelete(AjaxRequestTarget target, IModel rowModel) {				
 		
 	}
 
-	protected void onSave(AjaxRequestTarget target) {
+	protected void onSave(AjaxRequestTarget target, IModel rowModel) {
 				
 	}
 
-	protected void onError(AjaxRequestTarget target) {
+	protected void onError(AjaxRequestTarget target, IModel rowModel) {
 				
 	}
 }

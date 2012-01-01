@@ -113,22 +113,6 @@ public class EditableGrid<T> extends Panel {
 		}
 		super.onBeforeRender();
 	}
-	
-	protected void onError(AjaxRequestTarget target) {	
-
-	}
-
-	protected void onSave(AjaxRequestTarget target) {
-
-	}
-
-	protected void onDelete(AjaxRequestTarget target) {
-
-	}
-	
-	protected void onAdded(AjaxRequestTarget target, T newRow) {
-
-	}
 
 	private ListView newGridBody(List<T> items) {
 		return new ListView("rows", items) {
@@ -187,21 +171,37 @@ public class EditableGrid<T> extends Panel {
 
 			private static final long serialVersionUID = 1L;
 			@Override
-			protected void onError(AjaxRequestTarget target) {
+			protected void onError(AjaxRequestTarget target, IModel rowModel) {
 				EditableGrid.this.onError(target);
 			}
 			@Override
-			protected void onSave(AjaxRequestTarget target) {
-				EditableGrid.this.onSave(target);
+			protected void onSave(AjaxRequestTarget target, IModel rowModel) {
+				EditableGrid.this.onSave(target, rowModel);
 			}
 			@Override
-			protected void onDelete(AjaxRequestTarget target) {
-				EditableGrid.this.onDelete(target);
+			protected void onDelete(AjaxRequestTarget target, IModel rowModel) {
+				EditableGrid.this.onDelete(target, rowModel);
 			}
 			
 		});
 	}
+
+	protected void onError(AjaxRequestTarget target) {	
+
+	}
+
+	protected void onSave(AjaxRequestTarget target, IModel rowModel) {
+
+	}
+
+	protected void onDelete(AjaxRequestTarget target, IModel rowModel) {
+
+	}
 	
+	protected void onAdded(AjaxRequestTarget target, T newRow) {
+
+	}
+
 	private void validateCellAdded(Item cellItem, ICellPopulator populator) {
 		if (cellItem.get("cell") == null) {
 			throw new WicketRuntimeException (

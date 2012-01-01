@@ -14,6 +14,7 @@ import org.apache.wicket.PageParameters;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 public class HomePage extends WebPage {
@@ -35,6 +36,14 @@ public class HomePage extends WebPage {
 			@Override
 			protected void onError(AjaxRequestTarget target) {
 				target.addComponent(feedbackPanel);
+			}
+			@Override
+			protected void onAdded(AjaxRequestTarget target, Person newRow) {
+				System.out.println(newRow);
+			}
+			@Override
+			protected void onSave(AjaxRequestTarget target, IModel rowModel) {
+				System.err.println(rowModel.getObject());
 			}
 		});
 
